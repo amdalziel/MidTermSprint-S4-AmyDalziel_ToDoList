@@ -5,25 +5,25 @@ import java.util.LinkedList;
 
 public class User {
 
-    private int userId;
+    private String username;
     private String firstName;
     private String lastName;
     private TaskList userTaskList;
 
-    public User(String firstName, String lastName) {
-//        this.userId = id;
+    public User(String username, String firstName, String lastName) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userTaskList = new TaskList();
     }
 
 
-    public int getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -52,6 +52,6 @@ public class User {
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.username + ", " + this.firstName + " " + this.lastName;
     }
 }
