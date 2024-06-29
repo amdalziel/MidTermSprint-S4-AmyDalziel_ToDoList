@@ -5,8 +5,10 @@ import java.util.LinkedList;
 public class TaskList {
 
     private LinkedList<Task> listOfTasks;
+    private User user;
 
-    public TaskList() {
+    public TaskList(User user) {
+        this.user = user;
         listOfTasks = new LinkedList<>();
     }
 
@@ -20,6 +22,17 @@ public class TaskList {
         return newTask;
     }
 
+
+    public void deleteTask(Task taskToDelete) {
+        try {
+            listOfTasks.remove(taskToDelete);
+            System.out.println(user.getUsername()  + ": " + taskToDelete.getTaskDescription() + " ---> DELETED");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public Boolean markTaskComplete(Task taskToMark) {
         Boolean completeStatusChanged = false;
         try {
@@ -30,7 +43,7 @@ public class TaskList {
                 for (Task task : listOfTasks) {
                     if (task.equals(taskToMark)) {
                         task.setComplete(true);
-                        System.out.println(task.getTaskDescription() + " ---> COMPLETE");
+                        System.out.println(user.getUsername()  + ": " + task.getTaskDescription() + " ---> COMPLETE");
                         completeStatusChanged = true;
                     }
                 }
@@ -44,6 +57,7 @@ public class TaskList {
 
         public void printAllTasks () {
             try {
+                System.out.println("Task List for " + user.getUsername() + " - " + user.getFirstName() + " " + user.getLastName() + ": ");
                 for (Task task : listOfTasks) {
                     int taskNumber = listOfTasks.indexOf(task) + 1;
                     System.out.println("Task " + taskNumber + ": " + task);

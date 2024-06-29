@@ -11,12 +11,12 @@ public class UserList {
         Boolean newUserAdded = false;
         try {
             if (!checkUsernameIsUnique(newUser)) {
-                System.out.println("Error - username already used. Please select another username.");
+                System.out.println("Error - " + newUser.getUsername() + " already used. Please select another username.");
                 return newUserAdded;
             } else {
                 userArrayList.add(newUser);
                 newUserAdded = true;
-                System.out.println("User added to list.");
+                System.out.println(newUser.getUsername() + " added to the list.");
                 return newUserAdded;
             }
 
@@ -39,6 +39,7 @@ public class UserList {
 
     public void printUserList() {
         try {
+            System.out.println("Users in the ArrayList: ");
             for (User user : userArrayList) {
                 System.out.println(user);
             }

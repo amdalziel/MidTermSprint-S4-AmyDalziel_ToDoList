@@ -30,6 +30,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return this.taskDescription + " " + (this.getComplete() ? "COMPLETE" : "INCOMPLETE");
+        return this.taskDescription + " " + (this.getComplete() ? "COMPLETE" : "PENDING");
     }
 }
